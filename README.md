@@ -1,6 +1,6 @@
 # COMP345 Course Project Repository
 - Zexu Hao(40233332)
 - Yuqian Cai (40187954)
-- Mingming Zhang ()
+- Mingming Zhang (40258080)
 - Mengge He ()
 - Tuya Wei ()
