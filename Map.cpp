@@ -1,5 +1,5 @@
 #include "Map.h"
-#include <queue>
+#include <vector>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -46,6 +46,48 @@ class Territory {
 
 };
 
+class Continent{
+    
+    private:
+    std::string name;
+    int controlValue;
+    std::vector<std::string> continents_TerritoryNames;
+    std::vector<Territory*> continents_Territory;
+
+    public:
+    Continent::Continent(std::string name, int controlValue) 
+        : name(name), controlValue(controlValue) {}
+
+    Continent::~Continent() {}
+
+    // Add Territory to Continent
+    void Continent::addTerritory(Territory* territory) {
+        continents_Territory.push_back(territory);
+    }
+
+    // Return all the Territory(Territory pointer) in Continent
+    std::vector<Territory*> Continent::getTerritories() const {
+        return continents_Territory;
+    }
+
+    // Return all the Territory's name in Continent
+    std::string Continent::getName() const {return name;}
+
+
+    int Continent::getControlValue() const {return controlValue;}
+
+    // Print function
+    void Continent::printContinentInfo() const {
+        std::cout << "Continent: " << name << " with control value: " << controlValue << std::endl;
+        std::cout << "Territories in " << name << ": ";
+        
+        for (Territory* territory : continents_Territory) {
+            std::cout << territory->getName() << " ";
+        }
+        
+        std::cout << std::endl;}
+
+};
 
 
 class Map {
@@ -70,4 +112,5 @@ public:
     void addContinent(Continent* continent);
 
     bool validate() const;
+
 };

@@ -73,11 +73,12 @@ private:
     bool areContinentsConnected() const;
 
 public:
-    Map();
+    Map::Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {}
     ~Map();
 
     void addTerritory(Territory* territory);
     void addContinent(Continent* continent);
+    Map testLoadMaps(std::string filename);
 
     bool validate() const;
 };
