@@ -1,11 +1,14 @@
-
-#include "Map.h"
 #include <fstream>
-#include <sstream>
+#include <vector>
 #include <iostream>
 #include "MapDriver.h"
+#include <sstream>
+#include <stdexcept>
+#include <iterator>
+#include <algorithm>
+#include "Map.h"
 
-Map* MapDriver::loadMapFromFile(const std::string& filename) {
+Map* loadMapFromFile(const std::string& filename) {
     
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -102,4 +105,25 @@ Map* MapDriver::loadMapFromFile(const std::string& filename) {
 
     file.close();
     return map;
+}
+
+int main() {
+    Map* map =loadMapFromFile("USA.map");
+    
+    std::vector<Continent*> continentsList;
+    std::vector<Territory*> territoriesList;
+
+    continentsList=map ->getContinents();
+    for(Continent* continent : continentsList){
+        continent->printContinentInfo();
+    }
+
+    territoriesList=map ->getTerritories();
+    for(Territory* territory : territoriesList){
+        territory ->printTerritoryInfo();
+    }
+
+
+
+    return 0;
 }
