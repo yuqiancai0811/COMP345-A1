@@ -1,3 +1,4 @@
+
 #include "Map.h"
 #include <vector>
 #include <iostream>
@@ -6,38 +7,24 @@
 #include <iterator>
 #include <algorithm>
 
-class Territory {
-    private:
-    int x,y;
-    int armies;
-    std::string name;
-    std::string owner;
-    std::string continent;
-    std::vector<std::string> adjacentTerritoryNames;
-    std::vector<Territory*> adjacentTerritories;
+// Territory class methods
 
-
-    public:
-
-    Territory::Territory(std::string name, int x, int y, std::string continent, const std::vector<std::string>& adjNames) : name(name), x(x), y(y), continent(continent), adjacentTerritoryNames(adjNames) {}
+Territory::Territory(std::string name, int x, int y, std::string continent, const std::vector<std::string>& adjNames) : name(name), x(x), y(y), continent(continent), adjacentTerritoryNames(adjNames) {}
     //Constructor(Name + X + Y + Continent + vertor (adjacentTerritoryNames) );
 
-    Territory::~Territory() {}
+Territory::~Territory() {}
 
-    void setOwner(const std::string& newOwner){owner=newOwner;};
-    void setArmies(int numArmies){armies=numArmies;};
-    void Territory::addAdjacentTerritory(Territory* territory) {adjacentTerritories.push_back(territory);}
-    //Set method;
+void Territory::addAdjacentTerritory(Territory* territory) {
+    adjacentTerritories.push_back(territory);
+}
 
-    int getArmies() const {return armies;};
-    std::string getName() const {return name;};
-    std::string getOwner() const {return owner;};
-    std::string getContinent() const {return continent;};
-    std::vector<std::string> getAdjacentTerritoryNames() const {return adjacentTerritoryNames;};
-    std::vector<Territory*> getAdjacentTerritories() const {return adjacentTerritories;};
-    //Get method;
+std::string Territory::getName() const {return name;};
+std::string Territory::getOwner() const {return owner;};
+std::string Territory::getContinent() const {return continent;};
+std::vector<std::string> Territory::getAdjacentTerritoryNames() const {return adjacentTerritoryNames;};
+std::vector<Territory*> Territory::getAdjacentTerritories() const {return adjacentTerritories;};
 
-    void Territory::printTerritoryInfo() const {
+void Territory::printTerritoryInfo() const {
     std::cout << "Territory: " << name << " (" << x << ", " << y << ") in " << continent
               << ". Adjacent territories: ";
     for (Territory* adj : adjacentTerritories) {
@@ -46,90 +33,72 @@ class Territory {
     std::cout << std::endl;
 }
 
-};
+// Continent class methods
 
-class Continent{
-    
-    private:
-    std::string name;
-    int controlValue;
-    std::vector<std::string> continents_TerritoryNames;
-    std::vector<Territory*> continents_Territory;
+Continent::Continent(std::string name, int controlValue)
+    : name(name), controlValue(controlValue) {}
 
-    public:
-    Continent::Continent(std::string name, int controlValue) 
-        : name(name), controlValue(controlValue) {}
 
-    Continent::~Continent() {}
+void Continent::addTerritory(Territory* territory) {
+    continents_Territory.push_back(territory);
+}
 
-    // Add Territory to Continent
-    void Continent::addTerritory(Territory* territory) {
-        continents_Territory.push_back(territory);
+std::vector<Territory*> Continent::getTerritories() const {
+    return continents_Territory;
+}
+
+std::string Continent::getName() const {
+    return name;
+}
+
+int Continent::getControlValue() const {
+    return controlValue;
+}
+
+void Continent::printContinentInfo() const {
+    std::cout << "Continent: " << name << " has control value: " << controlValue << std::endl;
+    std::cout << "Territories in this continent: ";
+    for (Territory* territory : continents_Territory) {
+        std::cout << territory->getName() << " ";
     }
+    std::cout << std::endl;
+}
 
-    // Return all the Territory(Territory pointer) in Continent
-    std::vector<Territory*> Continent::getTerritories() const {
-        return continents_Territory;
-    }
+// Map class methods
+Map::Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {}
 
-    // Return all the Territory's name in Continent
-    std::string Continent::getName() const {return name;}
+Map::~Map() {}
 
+void Map::setAuthor(const std::string& newAuthor) { author = newAuthor; }
+void Map::setWarn(const std::string& newWarn) { warn = newWarn; }
+void Map::setImage(const std::string& newImage) { image = newImage; }
+void Map::setWrap(const std::string& newWrap) { wrap = newWrap; }
+void Map::setHorizontal(const std::string& newHorizontal) { horizontal = newHorizontal; }
 
-    int Continent::getControlValue() const {return controlValue;}
+std::string Map::getAuthor() const { return author; }
+std::string Map::getWarn() const { return warn; }
+std::string Map::getImage() const { return image; }
+std::string Map::getWrap() const { return wrap; }
+std::string Map::getHorizontal() const { return horizontal; }
 
-    // Print function
-    void Continent::printContinentInfo() const {
-        std::cout << "Continent: " << name << " with control value: " << controlValue << std::endl;
-        std::cout << "Territories in " << name << ": ";
-        
-        for (Territory* territory : continents_Territory) {
-            std::cout << territory->getName() << " ";
-        }
-        
-        std::cout << std::endl;}
+void Map::addTerritory(Territory* territory) {
+    territories.push_back(territory);
+}
 
-};
+void Map::addContinent(Continent* continent) {
+    continents.push_back(continent);
+}
 
+std::vector<Continent*> Map::getContinents() const {
+    return continents;
+}
 
-class Map {
-private:
-    std::string author;
-    std::string warn;
-    std::string image;
-    std::string wrap;
-    std::string horizontal;
+std::vector<Territory*> Map::getTerritories() const {
+    return territories;
+}
 
-    std::vector<Territory*> territories;
-    std::vector<Continent*> continents;
-
-    bool isConnectedGraph() const;
-    bool areContinentsConnected() const;
-
-public:
-    Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {};
-    ~Map();
-
-    // Set functions
-    void setAuthor(const std::string& newAuthor) { author = newAuthor; }
-    void setWarn(const std::string& newWarn) { warn = newWarn; }
-    void setImage(const std::string& newImage) { image = newImage; }
-    void setWrap(const std::string& newWrap) { wrap = newWrap; }
-    void setHorizontal(const std::string& newHorizontal) { horizontal = newHorizontal; }
-
-    // Get functions
-    std::string getAuthor() const { return author; }
-    std::string getWarn() const { return warn; }
-    std::string getImage() const { return image; }
-    std::string getWrap() const { return wrap; }
-    std::string getHorizontal() const { return horizontal; }
-
-    void addTerritory(Territory* territory);
-    void addContinent(Continent* continent);
-
-    bool Map::isConnectedGraph() const {
-
-        if (territories.empty()) return true;
+bool Map::isConnectedGraph() const {
+    if (territories.empty()) return true;
 
     std::vector<bool> visited(territories.size(), false);
     std::vector<Territory*> stack;
@@ -155,49 +124,49 @@ public:
 
     // Check if all territories are visited
     return std::all_of(visited.begin(), visited.end(), [](bool v) { return v; });
-    }
+}
 
-    bool Map::areContinentsConnected() const {
-        for (const Continent* continent : continents) {
-            std::vector<Territory*> territoriesInContinent = continent->getTerritories();
+bool Map::areContinentsConnected() const {
+    for (const Continent* continent : continents) {
+        std::vector<Territory*> territoriesInContinent = continent->getTerritories();
 
-            if (territoriesInContinent.empty()) continue;
+        if (territoriesInContinent.empty()) continue;
 
-            std::vector<bool> visited(territoriesInContinent.size(), false);
-            std::vector<Territory*> stack;
-            stack.push_back(territoriesInContinent[0]);
+        std::vector<bool> visited(territoriesInContinent.size(), false);
+        std::vector<Territory*> stack;
+        stack.push_back(territoriesInContinent[0]);
 
-            // Perform DFS to check if all territories in this continent are connected
-            while (!stack.empty()) {
-                Territory* current = stack.back();
-                stack.pop_back();
+        // Perform DFS to check if all territories in this continent are connected
+        while (!stack.empty()) {
+            Territory* current = stack.back();
+            stack.pop_back();
 
-                int index = std::distance(territoriesInContinent.begin(), std::find(territoriesInContinent.begin(), territoriesInContinent.end(), current));
-                if (!visited[index]) {
-                    visited[index] = true;
+            int index = std::distance(territoriesInContinent.begin(), std::find(territoriesInContinent.begin(), territoriesInContinent.end(), current));
+            if (!visited[index]) {
+                visited[index] = true;
 
-                    for (Territory* adj : current->getAdjacentTerritories()) {
-                        if (adj->getContinent() == continent->getName()) {
-                            int adjIndex = std::distance(territoriesInContinent.begin(), std::find(territoriesInContinent.begin(), territoriesInContinent.end(), adj));
-                            if (!visited[adjIndex]) {
-                                stack.push_back(adj);
-                            }
+                for (Territory* adj : current->getAdjacentTerritories()) {
+                    if (adj->getContinent() == continent->getName()) {
+                        int adjIndex = std::distance(territoriesInContinent.begin(), std::find(territoriesInContinent.begin(), territoriesInContinent.end(), adj));
+                        if (!visited[adjIndex]) {
+                            stack.push_back(adj);
                         }
                     }
                 }
             }
-
-            // Check if all territories in the continent are visited
-            if (!std::all_of(visited.begin(), visited.end(), [](bool v) { return v; })) {
-                return false;
-            }
         }
 
+        // Check if all territories in the continent are visited
+        if (!std::all_of(visited.begin(), visited.end(), [](bool v) { return v; })) {
+            return false;
+        }
     }
 
-    bool Map::territoryBelongsToOneContinentsConnected() const {
-        // each country belongs to one and only one continent
-         for (Territory* territory : territories) {
+    return true;
+}
+
+bool Map::territoryBelongsToOneContinentsConnected() const {
+    for (Territory* territory : territories) {
         int continentCount = 0;
         for (const Continent* continent : continents) {
             const std::vector<Territory*>& territoriesInContinent = continent->getTerritories();
@@ -213,10 +182,8 @@ public:
     }
 
     return true;
-    }
+}
 
-    bool Map::validate() const {
-        return isConnectedGraph() && areContinentsConnected() && territoryBelongsToOneContinentsConnected();
-    }
-
-};
+bool Map::validate() const {
+    return isConnectedGraph() && areContinentsConnected() && territoryBelongsToOneContinentsConnected();
+}

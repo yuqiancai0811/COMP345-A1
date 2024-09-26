@@ -1,15 +1,18 @@
 #include <string>
 #include <vector>
 
+#ifndef MAP_H
+#define MAP_H
+
 class Territory {
-    private:
+     private:
     int x,y;
     int armies;
     std::string name;
     std::string owner;
     std::string continent;
-    std::vector<std::string> adjacent_TerritoryNames;
-    std::vector<Territory*> adjacent_Territories;
+    std::vector<std::string> adjacentTerritoryNames;
+    std::vector<Territory*> adjacentTerritories;
 
 
     public:
@@ -69,44 +72,42 @@ private:
     std::vector<Territory*> territories;
     std::vector<Continent*> continents;
 
-    bool isConnectedGraph() const;
-    bool areContinentsConnected() const;
 
 public:
-    Map::Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {}
+    Map();
     ~Map();
 
     // Set functions
-    void setAuthor(const std::string& newAuthor) { author = newAuthor; }
-    void setWarn(const std::string& newWarn) { warn = newWarn; }
-    void setImage(const std::string& newImage) { image = newImage; }
-    void setWrap(const std::string& newWrap) { wrap = newWrap; }
-    void setHorizontal(const std::string& newHorizontal) { horizontal = newHorizontal; }
+    void setAuthor(const std::string& newAuthor);
+    void setWarn(const std::string& newWarn); 
+    void setImage(const std::string& newImage); 
+    void setWrap(const std::string& newWrap); 
+    void setHorizontal(const std::string& newHorizontal);
 
     // Get functions
-    std::string getAuthor() const { return author; }
-    std::string getWarn() const { return warn; }
-    std::string getImage() const { return image; }
-    std::string getWrap() const { return wrap; }
-    std::string getHorizontal() const { return horizontal; }
+    std::string getAuthor() const;
+    std::string getWarn() const; 
+    std::string getImage() const;
+    std::string getWrap() const;
+    std::string getHorizontal() const;
+    std::vector<Continent*> getContinents() const;
+    std::vector<Territory*> getTerritories() const;
+
 
     void addTerritory(Territory* territory);
     void addContinent(Continent* continent);
     Map testLoadMaps(std::string filename);
+    
 
-    bool Map::isConnectedGraph() const {
-        // the map is a connected graph；
-    }
+    bool isConnectedGraph() const ; // the map is a connected graph
 
-    bool Map::areContinentsConnected() const {
-        // continents are connected subgraphs
-    }
+    bool areContinentsConnected() const;// continents are connected subgraphs
+    
 
-    bool Map::territoryBelongsToOneContinentsConnected() const {
-        // each country belongs to one and only one continent
-    }
+    bool territoryBelongsToOneContinentsConnected() const;// each country belongs to one and only one continent
+    
 
-    bool Map::validate() const {
-        return isConnectedGraph() && areContinentsConnected() && territoryBelongsToOneContinentsConnected();
-    }
+    bool validate() const;
 };
+
+#endif // MAP_H
