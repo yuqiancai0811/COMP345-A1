@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <iterator>
+#include <algorithm>
 
 class Territory {
     private:
@@ -105,9 +107,7 @@ private:
     bool areContinentsConnected() const;
 
 public:
-
-    
-    Map();
+    Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {};
     ~Map();
 
     // Set functions
@@ -127,6 +127,96 @@ public:
     void addTerritory(Territory* territory);
     void addContinent(Continent* continent);
 
-    bool validate() const;
+    bool Map::isConnectedGraph() const {
+
+        if (territories.empty()) return true;
+
+    std::vector<bool> visited(territories.size(), false);
+    std::vector<Territory*> stack;
+    stack.push_back(territories[0]);
+
+    // Perform DFS to check if all territories are reachable
+    while (!stack.empty()) {
+        Territory* current = stack.back();
+        stack.pop_back();
+
+        int index = std::distance(territories.begin(), std::find(territories.begin(), territories.end(), current));
+        if (!visited[index]) {
+            visited[index] = true;
+
+            for (Territory* adj : current->getAdjacentTerritories()) {
+                int adjIndex = std::distance(territories.begin(), std::find(territories.begin(), territories.end(), adj));
+                if (!visited[adjIndex]) {
+                    stack.push_back(adj);
+                }
+            }
+        }
+    }
+
+    // Check if all territories are visited
+    return std::all_of(visited.begin(), visited.end(), [](bool v) { return v; });
+    }
+
+    bool Map::areContinentsConnected() const {
+        for (const Continent* continent : continents) {
+            std::vector<Territory*> territoriesInContinent = continent->getTerritories();
+
+            if (territoriesInContinent.empty()) continue;
+
+            std::vector<bool> visited(territoriesInContinent.size(), false);
+            std::vector<Territory*> stack;
+            stack.push_back(territoriesInContinent[0]);
+
+            // Perform DFS to check if all territories in this continent are connected
+            while (!stack.empty()) {
+                Territory* current = stack.back();
+                stack.pop_back();
+
+                int index = std::distance(territoriesInContinent.begin(), std::find(territoriesInContinent.begin(), territoriesInContinent.end(), current));
+                if (!visited[index]) {
+                    visited[index] = true;
+
+                    for (Territory* adj : current->getAdjacentTerritories()) {
+                        if (adj->getContinent() == continent->getName()) {
+                            int adjIndex = std::distance(territoriesInContinent.begin(), std::find(territoriesInContinent.begin(), territoriesInContinent.end(), adj));
+                            if (!visited[adjIndex]) {
+                                stack.push_back(adj);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Check if all territories in the continent are visited
+            if (!std::all_of(visited.begin(), visited.end(), [](bool v) { return v; })) {
+                return false;
+            }
+        }
+
+    }
+
+    bool Map::territoryBelongsToOneContinentsConnected() const {
+        // each country belongs to one and only one continent
+         for (Territory* territory : territories) {
+        int continentCount = 0;
+        for (const Continent* continent : continents) {
+            const std::vector<Territory*>& territoriesInContinent = continent->getTerritories();
+            if (std::find(territoriesInContinent.begin(), territoriesInContinent.end(), territory) != territoriesInContinent.end()) {
+                continentCount++;
+            }
+        }
+
+        // If a territory belongs to more than one continent, return false
+        if (continentCount != 1) {
+            return false;
+        }
+    }
+
+    return true;
+    }
+
+    bool Map::validate() const {
+        return isConnectedGraph() && areContinentsConnected() && territoryBelongsToOneContinentsConnected();
+    }
 
 };

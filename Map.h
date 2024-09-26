@@ -76,9 +76,37 @@ public:
     Map::Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {}
     ~Map();
 
+    // Set functions
+    void setAuthor(const std::string& newAuthor) { author = newAuthor; }
+    void setWarn(const std::string& newWarn) { warn = newWarn; }
+    void setImage(const std::string& newImage) { image = newImage; }
+    void setWrap(const std::string& newWrap) { wrap = newWrap; }
+    void setHorizontal(const std::string& newHorizontal) { horizontal = newHorizontal; }
+
+    // Get functions
+    std::string getAuthor() const { return author; }
+    std::string getWarn() const { return warn; }
+    std::string getImage() const { return image; }
+    std::string getWrap() const { return wrap; }
+    std::string getHorizontal() const { return horizontal; }
+
     void addTerritory(Territory* territory);
     void addContinent(Continent* continent);
     Map testLoadMaps(std::string filename);
 
-    bool validate() const;
+    bool Map::isConnectedGraph() const {
+        // the map is a connected graph；
+    }
+
+    bool Map::areContinentsConnected() const {
+        // continents are connected subgraphs
+    }
+
+    bool Map::territoryBelongsToOneContinentsConnected() const {
+        // each country belongs to one and only one continent
+    }
+
+    bool Map::validate() const {
+        return isConnectedGraph() && areContinentsConnected() && territoryBelongsToOneContinentsConnected();
+    }
 };
