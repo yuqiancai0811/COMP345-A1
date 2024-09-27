@@ -14,7 +14,7 @@ void testGameStates() {
         std::cout << "Current state: " << gameEngine.getCurrentStateAsString() << std::endl;
         
         // Prompt the user for a command
-        std::cout << "Enter command: ";
+        std::cout << "Enter command: "; //Start  loadmap validatemap addplayer  assigncountries  IssueOrders  ExecuteOrders Win End
         std::cin >> command;  // Read user input
         
         // Pass the command to the game engine to handle state transitions

@@ -24,10 +24,11 @@ public:
     // Destructor (using default as there is no dynamic memory to clean up)
     ~GameEngine() = default;
     // Processes the command input by the user and transitions between states
-    void handleCommand(const std::string& command);
+    void handleCommand(const std::string& command);// Handles user commands
     // Returns the current game state as an enum
-    GameState getCurrentState() const;
-    // Converts the enum state to a string for display
+
+    GameState getCurrentState() const; //getter function for the current state.
+    // Converts the enum state to a string.
     std::string getCurrentStateAsString() const;
 
 
