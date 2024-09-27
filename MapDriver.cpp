@@ -107,6 +107,21 @@ Map* loadMapFromFile(const std::string& filename) {
     return map;
 }
 
+bool testLoadMaps(){
+    std::vector<std::string> filename;
+    filename.push_back("USA.map");
+    bool result = true;
+    
+
+
+    for(const std::string& filename : filename){
+        Map* loadmap= loadMapFromFile(filename);
+        bool result = result && loadmap ->validate();
+    }
+
+    return result;
+} 
+
 int main() {
     Map* map =loadMapFromFile("USA.map");
     
@@ -122,6 +137,10 @@ int main() {
     for(Territory* territory : territoriesList){
         territory ->printTerritoryInfo();
     }
+
+    bool mapTestResult = testLoadMaps();
+    std::cout << mapTestResult << std::endl;
+    
 
 
 

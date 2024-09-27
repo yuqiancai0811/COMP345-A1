@@ -1,0 +1,310 @@
+[Map]
+image=Europe 1793e.bmp
+wrap=no
+scroll=horizontal
+author=apM
+warn=yes
+
+[Continents]
+Arabia=4
+Austria=16
+Baltic States=4
+Caucasus States=9
+Denmark=7
+Egypt=11
+France=18
+Great Britain=16
+Holy Roman Empire=10
+Italian States=11
+Netherlands=6
+North Africa=10
+Northern Russia=15
+Ottoman Anatolia=14
+Ottoman Balkans=14
+Persia=8
+Portugal=5
+Prussia=10
+Southern Russia=28
+Spain=18
+Sweden=6
+Switzerland=1
+Trans-Caspia=3
+Two Sicilies=6
+
+[Territories]
+Al Hasa,1211,770,Arabia,Nejd,Basra,Fars
+Arabian desert,1065,725,Arabia,Nejd,Baghdad,Hejaz,Palestine,Syria
+Hejaz,1001,762,Arabia,Arabian desert,Sinai,Palestine,Cairo
+Nejd,1156,763,Arabia,Al Hasa,Arabian desert,Baghdad,Basra
+
+Austrian Galicia,731,294,Austria,Poland,Eastern Hungary,Moldavia,Moravia,South Prussia,Central Hungary,Red Ruthenia
+Banat,742,380,Austria,Eastern Hungary,Wallachia,Transylvania,Slavonia,Serbia,Central Hungary
+Bohemia,599,305,Austria,Vienna,Moravia,Bavaria,Silesia,Saxony,Thuringia
+Carinthia,583,351,Austria,Tyrol,Carniola,Vienna,Bavaria,Styria,Venice
+Carniola,600,375,Austria,Carinthia,Croatia,Styria,Western Hungary,Venice,Dalmatia
+Central Hungary,697,340,Austria,Austrian Galicia,Banat,Eastern Hungary,Vienna,Moravia,Slavonia,Western Hungary
+Croatia,622,389,Austria,Carniola,Bosnia,Slavonia,Western Hungary,Dalmatia
+Eastern Hungary,733,335,Austria,Austrian Galicia,Banat,Central Hungary,Transylvania,Moldavia
+Moravia,657,308,Austria,Austrian Galicia,Bohemia,Central Hungary,Vienna,South Prussia,Silesia
+Red Ruthenia,776,281,Austria,Austrian Galicia,Poland,Bessarabia,Moldavia,Podolia,Volhynia
+Slavonia,684,382,Austria,Banat,Central Hungary,Croatia,Bosnia,Western Hungary,Serbia
+Styria,612,352,Austria,Carinthia,Carniola,Vienna,Western Hungary
+Transylvania,778,358,Austria,Banat,Eastern Hungary,Moldavia,Wallachia
+Tyrol,543,348,Austria,Carinthia,Bavaria,Wurttemberg,Switzerland,Venice,Lombardy
+Vienna,633,329,Austria,Bohemia,Carinthia,Central Hungary,Moravia,Styria,Western Hungary,Bavaria
+Western Hungary,652,355,Austria,Carniola,Central Hungary,Croatia,Slavonia,Styria,Vienna
+
+Estonia,792,93,Baltic States,St. Petersburg,Livonia,Gotland
+Kurland,739,150,Baltic States,East Prussia,Lithuania,Livonia
+Lithuania,797,181,Baltic States,Kurland,East Prussia,Mazovia,Black Russia,Pskov,Livonia,Vitebsk
+Livonia,794,129,Baltic States,Estonia,Kurland,Lithuania,Pskov,St. Petersburg
+
+Abkhazia,1066,445,Caucasus States,Circassia,Mingrelia
+Avaristan,1128,441,Caucasus States,Circassia,Kartli-Kakheti,Derbent,Terek Cossacks
+Baku,1183,501,Caucasus States,Karabakh,Derbent,Azerbaijan,Gilan
+Circassia,1053,416,Caucasus States,Abkhazia,Mingrelia,Avaristan,Terek Cossacks,Black Sea Cossacks
+Derbent,1159,450,Caucasus States,Kartli-Kakheti,Avaristan,Karabakh,Baku,Terek Cossacks
+Erivan,1112,502,Caucasus States,Kartli-Kakheti,Mingrelia,Karabakh,Armenia,Azerbaijan
+Karabakh,1153,496,Caucasus States,Kartli-Kakheti,Baku,Derbent,Erivan,Azerbaijan
+Kartli-Kakheti,1123,470,Caucasus States,Mingrelia,Derbent,Avaristan,Erivan,Karabakh
+Mingrelia,1086,482,Caucasus States,Circassia,Abkhazia,Kartli-Kakheti,Erivan,Trebizond,Armenia
+
+Copenhagen,552,172,Denmark,Jutland,Scania
+Eastern Norway,511,52,Denmark,Jutland,Western Norway,Geatland,Svealand,Norrland
+Faeroe Islands,224,36,Denmark,Iceland,Western Norway,Scottish Highlands
+Iceland,102,45,Denmark,Faeroe Islands,Connaught
+Jutland,510,149,Denmark,Copenhagen,Schleswig Holstein,Eastern Norway
+Schleswig Holstein,511,189,Denmark,Hanover,Mecklenburg,Jutland
+Western Norway,449,54,Denmark,Eastern Norway,Faeroe Islands,Northern England
+
+Aleppo,1015,600,Egypt,Cilicia,DiyarBakr,Mosul,Syria
+Alexandria,888,715,Egypt,Crete,Libyan desert,Sinai,Cairo,Cyprus
+Baghdad,1108,669,Egypt,Basra,Mosul,Syria,Arabian desert,Nejd,Lorestan,Khuzestan
+Basra,1187,713,Egypt,Baghdad,Nejd,Al Hasa,Khuzestan
+Cairo,892,772,Egypt,Alexandria,Libyan desert,Sinai,Hejaz
+Cyrenaicia,719,715,Egypt,Libyan desert,Tripolis
+Libyan desert,811,712,Egypt,Alexandria,Cairo,Cyrenaicia
+Mosul,1099,627,Egypt,Baghdad,Aleppo,DiyarBakr,Lorestan
+Palestine,976,687,Egypt,Arabian desert,Hejaz,Sinai,Syria
+Sinai,939,724,Egypt,Alexandria,Cairo,Hejaz,Palestine
+Syria,1002,648,Egypt,Aleppo,Arabian desert,Baghdad,Cyprus,Palestine
+
+Alsace & Lorraine,467,314,France,Franche Comte,Champagne,Baden,Liege,Luxemburg
+Anjou,351,340,France,Normandy,Britanny,Poitou,Ilse of France,Berry
+Auvergne,402,383,France,Poitou,Burgundy,Berry,Languedoc,Guyenne
+Berry,389,361,France,Anjou,Auvergne,Poitou,Burgundy,Ilse of France
+Britanny,308,333,France,Anjou,Normandy,Poitou,Cornwall
+Burgundy,445,365,France,Auvergne,Berry,Franche Comte,Champagne,Ilse of France,Languedoc,Dauphine,Piedmont
+Champagne,427,321,France,Alsace & Lorraine,Burgundy,Franche Comte,Picardy,Ilse of France,Liege
+Corsica,507,458,France,Provence,Tuscany,Sardinia
+Dauphine,444,391,France,Burgundy,Languedoc,Provence,Piedmont
+Franche Comte,473,341,France,Burgundy,Champagne,Baden,Alsace & Lorraine,Switzerland
+Gascony,347,432,France,Navarre,Pyrenees,Languedoc,Guyenne
+Guyenne,353,404,France,Auvergne,Gascony,Languedoc,Poitou,Munster
+Ilse of France,389,326,France,Anjou,Berry,Burgundy,Champagne,Normandy,Picardy
+Languedoc,413,417,France,Auvergne,Burgundy,Gascony,Catalonia,Pyrenees,Provence,Dauphine,Guyenne
+Normandy,350,313,France,Anjou,Britanny,Picardy,Ilse of France,Wessex
+Picardy,393,296,France,Champagne,Normandy,Ilse of France,Liege,Flanders,London
+Poitou,348,370,France,Anjou,Auvergne,Berry,Britanny,Guyenne
+Provence,449,423,France,Languedoc,Dauphine,Piedmont,Corsica
+
+Connaught,193,208,Great Britain,Leinster,Ulster,Munster,Iceland
+Cornwall,276,272,Great Britain,Britanny,Wessex
+East Anglia,353,233,Great Britain,London,Mercia,Flanders
+Leinster,222,224,Great Britain,Connaught,South Wales,Ulster,Munster
+London,339,254,Great Britain,East Anglia,Wessex,Mercia,Picardy
+Lothian,292,165,Great Britain,Scottish Highlands,Strathclyde,Northumbria
+Man,264,201,Great Britain,Ulster,Northumbria,Strathclyde,North Wales
+Mercia,315,229,Great Britain,East Anglia,London,Northern England,Wessex,South Wales,North Wales
+Munster,191,240,Great Britain,Connaught,Leinster,Galicia,Guyenne
+North Wales,280,226,Great Britain,Mercia,Man,South Wales,Northern England
+Northern England,314,205,Great Britain,Mercia,Northumbria,North Wales,Western Norway
+Northumbria,303,188,Great Britain,Strathclyde,Lothian,Man,Northern England
+Scottish Highlands,265,131,Great Britain,Strathclyde,Lothian,Ulster,Faeroe Islands
+South Wales,277,244,Great Britain,Wessex,Mercia,Leinster,North Wales
+Strathclyde,273,173,Great Britain,Lothian,Northumbria,Man,Scottish Highlands
+Ulster,220,187,Great Britain,Connaught,Leinster,Man,Scottish Highlands
+Wessex,300,260,Great Britain,London,Mercia,Cornwall,South Wales,Normandy
+
+Baden,497,304,Holy Roman Empire,Alsace & Lorraine,Franche Comte,Westphalia,Wurttemberg,Switzerland,Luxemburg,Hesse-Kassel,Bavaria
+Bavaria,553,310,Holy Roman Empire,Bohemia,Carinthia,Tyrol,Wurttemberg,Baden,Thuringia,Hesse-Kassel,Vienna
+Brunswick,548,247,Holy Roman Empire,Hanover,Mecklenburg,Saxony,Hesse-Kassel,Berlin
+Hanover,501,224,Holy Roman Empire,Schleswig Holstein,Brunswick,Mecklenburg,Holland,Westphalia,Hesse-Kassel,Friesland
+Hesse-Kassel,521,268,Holy Roman Empire,Baden,Hanover,Brunswick,Westphalia,Bavaria,Saxony,Thuringia
+Mecklenburg,556,216,Holy Roman Empire,Hanover,Berlin,Schleswig Holstein,Brunswick,West Pomerania
+Saxony,592,275,Holy Roman Empire,Thuringia,Brunswick,Hesse-Kassel,Bohemia,Berlin,Silesia
+Thuringia,555,285,Holy Roman Empire,Saxony,Bavaria,Hesse-Kassel,Bohemia
+Westphalia,476,259,Holy Roman Empire,Baden,Hanover,Hesse-Kassel,Holland,Luxemburg,Brabant,Liege
+Wurttemberg,524,318,Holy Roman Empire,Tyrol,Baden,Bavaria,Switzerland
+
+Dalmatia,633,423,Italian States,Venice,Papal States,Carniola,Croatia,Bosnia,Montenegro,Ionian islands
+Genoa,504,403,Italian States,Parma & Modena,Piedmont
+Ionian islands,709,542,Italian States,Dalmatia,Albania,Greece,Morea
+Lombardy,524,380,Italian States,Switzerland,Venice,Papal States,Piedmont,Parma & Modena,Tyrol
+Papal States,569,431,Italian States,Abruzzo,Rome,Lombardy,Tuscany,Venice,Parma & Modena,Dalmatia
+Parma & Modena,531,405,Italian States,Piedmont,Genoa,Lombardy,Tuscany,Papal States
+Piedmont,481,385,Italian States,Parma & Modena,Switzerland,Genoa,Lombardy,Provence,Dauphine,Burgundy
+Rome,568,461,Italian States,Papal States,Tuscany,Sardinia,Naples,Abruzzo
+Sardinia,506,502,Italian States,Rome,Sicily,Corsica,Bona,Balearic islands
+Tuscany,545,432,Italian States,Parma & Modena,Papal States,Rome,Corsica
+Venice,557,374,Italian States,Lombardy,Papal States,Dalmatia,Carinthia,Carniola,Tyrol
+
+Brabant,427,267,Netherlands,Westphalia,Holland,Liege,Flanders
+Flanders,406,280,Netherlands,Picardy,East Anglia,Brabant,Liege
+Friesland,459,220,Netherlands,Holland,Hanover
+Holland,445,242,Netherlands,Friesland,Hanover,Westphalia,Brabant
+Liege,440,286,Netherlands,Flanders,Luxemburg,Brabant,Picardy,Champagne,Alsace & Lorraine,Westphalia
+Luxemburg,461,293,Netherlands,Liege,Baden,Westphalia,Alsace & Lorraine
+
+Algiers,407,611,North Africa,Oran,Bona,Sahara desert,Balearic islands
+Bona,464,595,North Africa,Algiers,Tunisa,Tunis,Sahara desert,Sardinia
+Fez,310,649,North Africa,Oran,Tangier,Morocco,Sahara desert
+Morocco,215,730,North Africa,Fez,Tangier,Sahara desert,Canary Islands
+Oran,359,629,North Africa,Algiers,Fez,Sahara desert
+Sahara desert,368,712,North Africa,Algiers,Bona,Fez,Morocco,Oran,Tunisa
+Tangier,250,639,North Africa,Fez,Morocco,Gibraltar
+Tripolis,595,694,North Africa,Cyrenaicia,Tunisa,Malta
+Tunis,520,596,North Africa,Bona,Tunisa,Sicily
+Tunisa,503,659,North Africa,Bona,Sahara desert,Tripolis,Tunis
+
+Archangelsk,1041,20,Northern Russia,Carelia,Vologda
+Carelia,910,26,Northern Russia,St. Petersburg,Novgorod,Archangelsk,Finland
+Kazan,1120,150,Northern Russia,Simbirsk,Samara,Ufa,Nizhni-Novgorod,Viatka
+Kostroma,1054,85,Northern Russia,Nizhni-Novgorod,Novgorod,Tver,Viatka,Vologda
+Moscow,971,149,Northern Russia,Smolensk,Tver,Tula,Kaluga,Nizhni-Novgorod
+Nizhni-Novgorod,1040,129,Northern Russia,Moscow,Tver,Kostroma,Viatka,Kazan,Simbirsk,Penza,Tula
+Novgorod,924,77,Northern Russia,Tver,Smolensk,St. Petersburg,Tver,Pskov,Carelia,Vologda,Kostroma
+Perm,1221,72,Northern Russia,Vologda,Viatka,Ufa
+Pskov,869,148,Northern Russia,Vitebsk,St. Petersburg,Novgorod,Smolensk,Lithuania,Livonia
+Smolensk,911,163,Northern Russia,Orel,Moscow,Tver,Novgorod,Vitebsk,Pskov,Kaluga
+St. Petersburg,855,100,Northern Russia,Estonia,Livonia,Carelia,Novgorod,Pskov
+Tver,974,97,Northern Russia,Moscow,Smolensk,Novgorod,Nizhni-Novgorod,Kostroma
+Ufa,1205,150,Northern Russia,Samara,Orenburg,Kazan,Viatka,Perm
+Viatka,1131,105,Northern Russia,Vologda,Kazan,Perm,Kostroma,Nizhni-Novgorod,Ufa
+Vologda,1119,45,Northern Russia,Novgorod,Archangelsk,Kostroma,Viatka,Perm
+
+Aegean islands,831,590,Ottoman Anatolia,Menteshe,Crete,Cyprus
+Armenia,1080,532,Ottoman Anatolia,DiyarBakr,Trebizond,Sivas,Erivan,Mingrelia,Azerbaijan,Ardalan
+Caramania,932,526,Ottoman Anatolia,Nicea,Sinope,Sivas,Hamid,Cilicia
+Cilicia,948,561,Ottoman Anatolia,Caramania,DiyarBakr,Tekke,Aleppo,Sivas,Hamid,Cyprus
+Cyprus,924,613,Ottoman Anatolia,Cilicia,Alexandria,Syria,Aegean islands
+DiyarBakr,1065,566,Ottoman Anatolia,Armenia,Cilicia,Aleppo,Sivas,Mosul,Ardalan
+Hamid,882,537,Ottoman Anatolia,Caramania,Cilicia,Tekke,Menteshe,Nicea,Kurassi
+Kurassi,834,513,Ottoman Anatolia,Hamid,Menteshe,Constantinople,Nicea
+Menteshe,840,552,Ottoman Anatolia,Hamid,Kurassi,Tekke,Greece,Aegean islands
+Nicea,876,499,Ottoman Anatolia,Caramania,Hamid,Kurassi,Constantinople,Sinope
+Sinope,931,487,Ottoman Anatolia,Caramania,Nicea,Trebizond,Sivas,Crimea
+Sivas,993,525,Ottoman Anatolia,Armenia,Caramania,Cilicia,DiyarBakr,Sinope,Trebizond
+Tekke,887,566,Ottoman Anatolia,Cilicia,Hamid,Menteshe
+Trebizond,1036,501,Ottoman Anatolia,Armenia,Sinope,Sivas,Mingrelia
+
+Albania,705,489,Ottoman Balkans,Thessaly,Macedonia,Montenegro,Greece,Serbia,Basilicata,Ionian islands
+Bessarabia,853,349,Ottoman Balkans,Dobruja,Kherson,Podolia,Moldavia,Red Ruthenia
+Bosnia,664,406,Ottoman Balkans,Croatia,Slavonia,Montenegro,Serbia,Dalmatia
+Bulgaria,792,434,Ottoman Balkans,Constantinople,Macedonia,Wallachia,Dobruja,Serbia
+Constantinople,809,470,Ottoman Balkans,Kurassi,Nicea,Bulgaria,Macedonia,Crimea
+Crete,787,610,Ottoman Balkans,Morea,Alexandria,Malta,Aegean islands
+Dobruja,837,406,Ottoman Balkans,Bulgaria,Bessarabia,Moldavia,Wallachia
+Greece,759,539,Ottoman Balkans,Morea,Albania,Thessaly,Menteshe,Ionian islands
+Macedonia,740,463,Ottoman Balkans,Albania,Bulgaria,Constantinople,Thessaly,Serbia
+Moldavia,816,344,Ottoman Balkans,Transylvania,Austrian Galicia,Dobruja,Wallachia,Eastern Hungary,Bessarabia,Red Ruthenia
+Montenegro,686,438,Ottoman Balkans,Albania,Bosnia,Serbia,Dalmatia
+Morea,740,560,Ottoman Balkans,Greece,Crete,Ionian islands
+Serbia,726,422,Ottoman Balkans,Banat,Slavonia,Albania,Bosnia,Bulgaria,Macedonia,Montenegro,Wallachia
+Thessaly,737,503,Ottoman Balkans,Albania,Macedonia,Greece
+Wallachia,799,400,Ottoman Balkans,Banat,Transylvania,Bulgaria,Dobruja,Serbia,Moldavia
+
+Ardalan,1152,586,Persia,Lorestan,Azerbaijan,Gilan,Armenia,Lorestan,DiyarBakr,Iraq-i Ajam
+Azerbaijan,1147,545,Persia,Ardalan,Gilan,Armenia,Erivan,Karabakh,Baku
+Fars,1265,712,Persia,Khuzestan,Isfahan,Al Hasa
+Gilan,1236,568,Persia,Azerbaijan,Ardalan,Isfahan,Iraq-i Ajam,Baku,Turkmenistan
+Iraq-i Ajam,1214,613,Persia,Gilan,Khuzestan,Lorestan,Ardalan,Isfahan
+Isfahan,1266,626,Persia,Fars,Gilan,Khuzestan,Iraq-i Ajam
+Khuzestan,1208,683,Persia,Lorestan,Iraq-i Ajam,Basra,Baghdad,Fars,Isfahan
+Lorestan,1165,636,Persia,Khuzestan,Iraq-i Ajam,Ardalan,Mosul,Baghdad
+
+Alametejo,219,547,Portugal,Andalusia,Lisbon,Beira,Estramadura
+Beira,216,493,Portugal,Alametejo,Lisbon,Estramadura,Minho,Leon
+Lisbon,199,526,Portugal,Alametejo,Beira,Madiera
+Madiera,56,668,Portugal,Lisbon,Canary Islands
+Minho,216,473,Portugal,Beira,Galicia,Asturias,Leon
+
+Berlin,589,240,Prussia,Brandenburg,West Pomerania,East Pomerania,Mecklenburg,Brunswick,Saxony
+Brandenburg,637,237,Prussia,Berlin,West Prussia,South Prussia,East Pomerania,Silesia
+East Pomerania,623,213,Prussia,West Pomerania,Berlin,Brandenburg,West Prussia,Scania
+East Prussia,720,200,Prussia,Kurland,Lithuania,Poland,Mazovia,West Prussia,South Prussia
+Mazovia,745,216,Prussia,Lithuania,East Prussia,Poland,Podlesia,Black Russia
+Poland,726,254,Prussia,Austrian Galicia,East Prussia,Mazovia,Podlesia,South Prussia,Volhynia,Red Ruthenia
+Silesia,651,271,Prussia,Bohemia,Moravia,Saxony,Brandenburg,South Prussia
+South Prussia,687,254,Prussia,Austrian Galicia,Moravia,Brandenburg,East Prussia,Poland,Silesia,West Prussia
+West Pomerania,587,215,Prussia,East Pomerania,Berlin,Mecklenburg
+West Prussia,678,215,Prussia,Brandenburg,East Prussia,East Pomerania,South Prussia
+
+Astrakhan,1116,358,Southern Russia,Don Cossacks,Terek Cossacks,Orenburg,Samara,Saratov
+Azov,1043,346,Southern Russia,Black Sea Cossacks,Don Cossacks
+Black Russia,806,213,Southern Russia,Lithuania,Mazovia,Podlesia,Vitebsk
+Black Sea Cossacks,1034,370,Southern Russia,Crimea,Azov,Don Cossacks,Black Sea Cossacks,Terek Cossacks,Circassia
+Chernigov,906,248,Southern Russia,Orel,Podlesia,Kiev,Poltava,Vitebsk,Kursk
+Crimea,942,386,Southern Russia,Sinope,Constantinople,Kherson,Black Sea Cossacks,Ekaterinoslav
+Don Cossacks,1059,315,Southern Russia,Azov,Voronezh,Astrakhan,Kharkov,Black Sea Cossacks,Terek Cossacks,Saratov,Ekaterinoslav
+Ekaterinoslav,984,332,Southern Russia,Kherson,Crimea,Poltava,Kharkov,Don Cossacks
+Kaluga,951,188,Southern Russia,Tula,Orel,Smolensk,Moscow
+Kharkov,993,294,Southern Russia,Ekaterinoslav,Poltava,Kursk,Voronezh,Don Cossacks
+Kherson,905,343,Southern Russia,Bessarabia,Podolia,Kiev,Crimea,Ekaterinoslav,Poltava
+Kiev,882,291,Southern Russia,Kherson,Chernigov,Podolia,Poltava,Volhynia,Podlesia
+Kursk,984,248,Southern Russia,Chernigov,Kharkov,Orel,Voronezh,Poltava
+Orel,944,219,Southern Russia,Smolensk,Chernigov,Vitebsk,Voronezh,Tula,Kursk,Tambov,Kaluga
+Orenburg,1167,264,Southern Russia,Astrakhan,Samara,Ufa,Uralsk,Alshyn Kazakhs
+Penza,1066,193,Southern Russia,Saratov,Tula,Tambov,Nizhni-Novgorod,Simbirsk
+Podlesia,811,239,Southern Russia,Mazovia,Kiev,Chernigov,Volhynia,Vitebsk,Black Russia,Poland
+Podolia,845,297,Southern Russia,Bessarabia,Kherson,Kiev,Volhynia,Red Ruthenia
+Poltava,944,293,Southern Russia,Kharkov,Kiev,Chernigov,Ekaterinoslav,Kursk,Kherson
+Samara,1144,224,Southern Russia,Astrakhan,Orenburg,Ufa,Kazan,Simbirsk,Saratov
+Saratov,1084,234,Southern Russia,Astrakhan,Voronezh,Penza,Tambov,Don Cossacks,Samara,Simbirsk
+Simbirsk,1102,178,Southern Russia,Saratov,Samara,Penza,Nizhni-Novgorod,Kazan
+Tambov,1051,222,Southern Russia,Voronezh,Tula,Penza,Saratov,Orel
+Terek Cossacks,1115,411,Southern Russia,Astrakhan,Don Cossacks,Black Sea Cossacks,Circassia,Avaristan,Derbent,Mangyshlak
+Tula,1008,188,Southern Russia,Orel,Kaluga,Moscow,Tambov,Nizhni-Novgorod,Penza
+Uralsk,1218,279,Southern Russia,Orenburg,Alshyn Kazakhs
+Vitebsk,865,196,Southern Russia,Lithuania,Black Russia,Orel,Chernigov,Podlesia,Smolensk,Pskov
+Volhynia,804,268,Southern Russia,Poland,Podlesia,Podolia,Kiev,Red Ruthenia
+Voronezh,1029,255,Southern Russia,Orel,Tambov,Kharkov,Don Cossacks,Saratov,Kursk
+
+Andalusia,259,557,Spain,Alametejo,Grenada,Estramadura,New Castile,Gibraltar,Murcia,Canary Islands
+Aragon,328,482,Spain,Old Castile,Madrid,Navarre,Catalonia,Valencia,Pyrenees
+Asturias,250,445,Spain,Minho,Old Castile,Galicia,Leon
+Balearic islands,400,514,Spain,Sardinia,Catalonia,Valencia,Algiers
+Canary Islands,82,771,Spain,Madiera,Andalusia,Morocco
+Catalonia,367,475,Spain,Languedoc,Aragon,Balearic islands,Valencia,Pyrenees
+Estramadura,248,524,Spain,Alametejo,Beira,Andalusia,New Castile,Leon
+Galicia,210,444,Spain,Minho,Asturias,Munster
+Gibraltar,254,582,Spain,Tangier,Andalusia,Grenada
+Grenada,290,566,Spain,Andalusia,Gibraltar,Murcia
+Leon,260,484,Spain,Beira,Minho,Asturias,Estramadura,Old Castile,Madrid,New Castile
+Madrid,297,489,Spain,Aragon,Leon,Old Castile,New Castile,Valencia
+Murcia,323,548,Spain,Andalusia,Grenada,Valencia,New Castile
+Navarre,315,445,Spain,Gascony,Aragon,Old Castile,Pyrenees
+New Castile,284,519,Spain,Andalusia,Estramadura,Leon,Madrid,Murcia,Valencia
+Old Castile,287,451,Spain,Aragon,Asturias,Leon,Madrid,Navarre
+Pyrenees,359,454,Spain,Gascony,Languedoc,Aragon,Catalonia,Navarre
+Valencia,332,519,Spain,Aragon,Balearic islands,Catalonia,Murcia,Madrid,New Castile
+
+Finland,783,29,Sweden,Carelia,Norrland
+Geatland,592,113,Sweden,Eastern Norway,Scania,Svealand
+Gotland,666,125,Sweden,Scania,Svealand,Estonia
+Norrland,615,21,Sweden,Svealand,Finland,Eastern Norway
+Scania,595,143,Sweden,Copenhagen,Geatland,Gotland,East Pomerania
+Svealand,604,72,Sweden,Gotland,Geatland,Norrland,Eastern Norway
+
+Switzerland,508,353,Switzerland,Tyrol,Baden,Wurttemberg,Franche Comte,Lombardy,Piedmont
+
+Alshyn Kazakhs,1257,321,Trans-Caspia,Mangyshlak,Uralsk,Orenburg
+Mangyshlak,1248,410,Trans-Caspia,Turkmenistan,Alshyn Kazakhs,Terek Cossacks
+Turkmenistan,1267,489,Trans-Caspia,Mangyshlak,Gilan
+
+Abruzzo,587,452,Two Sicilies,Naples,Rome,Papal States
+Basilicata,629,487,Two Sicilies,Albania,Naples,Calabria
+Calabria,638,519,Two Sicilies,Sicily,Basilicata
+Malta,600,592,Two Sicilies,Crete,Sicily,Tripolis
+Naples,606,470,Two Sicilies,Basilicata,Abruzzo,Rome
+Sicily,599,557,Two Sicilies,Tunis,Calabria,Sardinia,Malta
