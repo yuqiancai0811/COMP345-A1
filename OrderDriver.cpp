@@ -19,14 +19,14 @@ void test() {
         ordersList.addOrder(new negotiateOrder());
 
         std::cout << "Orders before execution:\n";
-        std::cout << ordersList;
+        ordersList.showAllOrders();
 
         // Execute some orders
         ordersList.removeOrder(0); // Remove first order (DeployOrder)
         ordersList.moveOrder(2, 0); // Move BombOrder to the first position
 
-        std::cout << "Orders after modifications (move and remove):\n";
-        std::cout << ordersList;
+        std::cout << "\n\nOrders after modifications (move and remove):\n";
+        ordersList.showAllOrders();
 
     }
 
@@ -34,4 +34,5 @@ int main() {
     test();
     return 0;
 }
+
 
