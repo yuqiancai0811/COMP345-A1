@@ -1,16 +1,10 @@
-//
-// Created by Crimson on 2024-09-29.
-//
-
 #ifndef ORDERDRIVER_H
 #define ORDERDRIVER_H
 
+#include "Orders.h"
+#include <iostream>
 
+// Function to test the Order and orderList functionality
+void test();
 
-class OrderDriver {
-
-};
-
-
-
-#endif //ORDERDRIVER_H
+#endif // ORDERDRIVER_H
