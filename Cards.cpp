@@ -53,10 +53,12 @@ void Card::play(Hand &hand, Deck &deck)
     hand.removeCard(*this);
 
     // Return the card to the deck
-    deck.addCard(*this);
+    deck.addCard(this);
 
     cout << "Played card of type: " << getType() << ". Card returned to the deck." << endl;
 }
+
+
 
 // friend operator to access private members
 ostream &operator<<(ostream &out, const Card &card)
@@ -102,13 +104,13 @@ Deck &Deck::operator=(const Deck &other)
 }
 
 // Destructor
-Deck::~Deck()
-{
-    for (Card *card : cards)
+Deck::~Deck() {
+    for (Card* card : cards) {
         delete card;
+    }
 }
 
-Card Deck::draw()
+Card *Deck::draw()
 {
     if (cards.empty())
     {
@@ -126,18 +128,16 @@ Card Deck::draw()
     }
 
     // Draw the last card
-    Card drawnCard = *cards.back();
-    delete cards.back();
+    Card *drawnCard = cards.back();
     cards.pop_back(); // Remove the card from the deck
     return drawnCard;
 }
 
 // Add a card back to the deck
-void Deck::addCard(Card &card)
+void Deck::addCard(Card *card)
 {
-    cards.push_back(new Card(card));
+    cards.push_back(card);
 }
-
 // friend operator to access private members
 ostream &operator<<(ostream &out, const Deck &deck)
 {
@@ -177,15 +177,12 @@ Hand &Hand::operator=(const Hand &other)
 
 // Destructor
 Hand::~Hand()
-{
-    for (Card *card : handCards)
-        delete card;
-}
+{}
 
 // Add a card to the hand
-void Hand::addCard(Card &card)
+void Hand::addCard(Card *card)
 {
-    handCards.push_back(new Card(card));
+    handCards.push_back(card);
 }
 
 // Removes a card from the hand
@@ -195,38 +192,36 @@ void Hand::removeCard(const Card &card)
                       { return c->getType() == card.getType(); });
 
     if (it != handCards.end())
-    {
-        handCards.erase(it); // Remove the card pointer from the vector
+    {            
+      handCards.erase(it); // Remove the card pointer from the vector
     }
 }
 
-// // Play all cards in the hand
-// void Hand::playAll(Deck &deck) {
-//     for (Card *card : handCards) {
-//         card->play(*this);
-
-//         // Return the card to the deck
-//         deck.addCard(*card);
-
-//         delete card;
-//     }
-
-//     // Clear the hand after all cards are played and added back to the deck
-//     handCards.clear();
-// }
-
 // Method to play and remove the first card in hand
-void Hand::playFirstCard(Deck &deck)
-{
-    if (!handCards.empty())
-    {
-        // Get the first card
-        Card *cardToPlay = handCards.front();
+// void Hand::playFirstCard(Deck &deck)
+// {
+//     if (!handCards.empty())
+//     {
+//         // Get the first card
+//         Card *cardToPlay = handCards.front();
 
-        // Play the card (handles removal from hand and returning to deck)
+//         // Play the card (handles removal from hand and returning to deck)
+//         cardToPlay->play(*this, deck);
+//     }
+// }
+void Hand::playFirstCard(Deck& deck) {
+    if (!handCards.empty()) {
+        // Get the first card
+        Card* cardToPlay = handCards.front();
+
+        // Remove card from hand without deleting
+        handCards.erase(handCards.begin());
+
+        // Play the card (transfer it back to the deck)
         cardToPlay->play(*this, deck);
     }
 }
+
 
 // Method to check if the hand is empty
 bool Hand::isEmpty() const

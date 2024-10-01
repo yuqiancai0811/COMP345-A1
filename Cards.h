@@ -57,9 +57,9 @@ public:
     ~Deck();
 
     // Draws a card from the deck
-    Card draw();
+    Card *draw();
     // play a card return to the deck
-    void addCard(Card &card);
+    void addCard(Card *card);
     // friend operator to access private members
     friend ostream &operator<<(ostream &out, const Deck &deck);
 
@@ -78,12 +78,9 @@ public:
     ~Hand(); // Destructor
 
     // Adds a card to the hand
-    void addCard(Card &card);
+    void addCard(Card *card);
     // Removes a card from the hand
     void removeCard(const Card &card);
-
-    // Play all cards in hand
-    // void playAll(Deck &deck);
 
     // play and remove the first card in hand
     void playFirstCard(Deck &deck);

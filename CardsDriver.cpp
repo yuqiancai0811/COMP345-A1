@@ -13,9 +13,9 @@ void testCards() {
     cout << "Drawing cards and adding them to the hand..." << endl;
     for (int i = 0; i < 5; ++i) {
         // Draw a card from the deck
-        Card drawnCard = deck.draw();
-        hand.addCard(drawnCard);
-        cout << "Added card of type: " << drawnCard.getType() << " to hand." << endl;
+        Card *drawnCard = deck.draw();  // Now drawing a pointer to Card
+        hand.addCard(drawnCard);        // Add the pointer to the hand
+        cout << "Added card of type: " << drawnCard->getType() << " to hand." << endl;
     }
 
     // Play each card in the hand
