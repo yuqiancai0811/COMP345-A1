@@ -2,7 +2,7 @@
 #include "OrderDriver.h"
 #include "Orders.cpp"
 
-void test() {
+void testOrdersLists() {
 
     orderList ordersList;
 
