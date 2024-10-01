@@ -1,3 +1,5 @@
+
+
 //
 // Created by Crimson on 2024-09-29.
 //
@@ -6,134 +8,146 @@
 #include <iostream>
 #include <string>
 #include <vector>
-class Order {
-    protected:
-        std::string effect;
-        bool executed=false;
-    public:
-        std::string name;
 
-        Order() : executed(false) {}
-        virtual ~Order() {}
+class Order {
+protected:
+    std::string* effect;  // Changed to pointer
+    bool* executed;       // Changed to pointer
+public:
+    std::string* name;    // Changed to pointer
+
+    // Constructor
+    Order() : effect(new std::string), executed(new bool(false)), name(new std::string) {}
+
+    // Destructor
+    virtual ~Order() {
+        delete effect;
+        delete executed;
+        delete name;
+    }
+
+    // Copy constructor
+    Order(const Order& other) {
+        effect = new std::string(*other.effect);
+        executed = new bool(*other.executed);
+        name = new std::string(*other.name);
+    }
+
+    // Assignment operator
+    Order& operator=(const Order& other) {
+        if (this == &other) return *this;
+
+        delete effect;
+        delete executed;
+        delete name;
+
+        effect = new std::string(*other.effect);
+        executed = new bool(*other.executed);
+        name = new std::string(*other.name);
+
+        return *this;
+    }
 
     // Validate and execute methods are virtual and overridden by subclasses
-        virtual bool validate() const = 0;
-        virtual void execute() = 0;
+    virtual bool validate() const = 0;
+    virtual void execute() = 0;
 
-        virtual std::string toString() const {
-           // return "Order: " + name + (executed ? " (Executed)" : " (Not executed)") + "\nEffect: " + effect + "\n";
-            if (executed&&!name.empty()) {
-                return "Order:"+ name + " is executed\n";
-            }
-            else if(!executed&&!name.empty()) {
-                return "Order:" + name + " is not executed\n";
-            }
-            else {
-                return"Order:Null\n";
-            }
+    virtual std::string toString() const {
+        if (*executed && !name->empty()) {
+            return "Order: " + *name + " is executed\n";
+        } else if (!*executed && !name->empty()) {
+            return "Order: " + *name + " is not executed\n";
+        } else {
+            return "Order: Null\n";
         }
+    }
+
     // Stream insertion operator
-        friend std::ostream& operator<<(std::ostream& os, const Order& order) {
-            os << "Order: " << order.name << (order.executed ? " (Executed)" : " (Not executed)") << "\n";
-            os << "Effect: " << order.effect << "\n";
-            return os;
-
-
+    friend std::ostream& operator<<(std::ostream& os, const Order& order) {
+        os << "Order: " << *order.name << (*order.executed ? " (Executed)" : " (Not executed)") << "\n";
+        os << "Effect: " << *order.effect << "\n";
+        return os;
     }
 };
 
+// Subclasses now inherit the changes made to the base class
+
 class deployOrder : public Order {
-  public:
+public:
     deployOrder() {
-        name = "deployOrder";
+        *name = "deployOrder";
     }
+
     bool validate() const override {
-        // For now, let's assume this order is always valid
         return true;
     }
 
     void execute() override {
         if (validate()) {
-            effect = "Deploy troops";
-            executed = true;
+            *effect = "Deploy troops";
+            *executed = true;
         }
-    }
-    std::string toString() const override {
-        return Order::toString(); // Use the base class implementation
     }
 };
 
 class advanceOrder : public Order {
-  public:
-
+public:
     advanceOrder() {
-        name = "Advance Order";
+        *name = "Advance Order";
     }
-    std::string name="advanceOreder";
+
     bool validate() const override {
-        // For now, let's assume this order is always valid
         return true;
     }
 
     void execute() override {
         if (validate()) {
-            effect = "Advance troops";
-            executed = true;
+            *effect = "Advance troops";
+            *executed = true;
         }
-    }
-    std::string toString() const override {
-        return Order::toString(); // Use the base class implementation
     }
 };
 
 class bombOrder : public Order {
-  public:
+public:
     bombOrder() {
-        name="Bomb Order";
+        *name = "Bomb Order";
     }
+
     bool validate() const override {
         return true;
     }
 
     void execute() override {
         if (validate()) {
-            effect = "Bomb troops";
-            executed = true;
+            *effect = "Bomb troops";
+            *executed = true;
         }
-    }
-
-    std::string toString() const override {
-        return Order::toString(); // Use the base class implementation
     }
 };
 
 class blockadeOrder : public Order {
-  public:
-
+public:
     blockadeOrder() {
-        name = "Blockade Order";
+        *name = "Blockade Order";
     }
+
     bool validate() const override {
         return true;
     }
 
     void execute() override {
         if (validate()) {
-            effect = "Blockade troops";
-            executed = true;
+            *effect = "Blockade troops";
+            *executed = true;
         }
-    }
-
-    std::string toString() const override {
-        return Order::toString(); // Use the base class implementation
     }
 };
 
 class airliftOrder : public Order {
-    public:
-
+public:
     airliftOrder() {
-        name="Airlift Order";
+        *name = "Airlift Order";
     }
 
     bool validate() const override {
@@ -142,21 +156,16 @@ class airliftOrder : public Order {
 
     void execute() override {
         if (validate()) {
-            effect = "Airlift troops";
-            executed = true;
+            *effect = "Airlift troops";
+            *executed = true;
         }
-    }
-
-    std::string toString() const override {
-        return Order::toString(); // Use the base class implementation
     }
 };
 
 class negotiateOrder : public Order {
-    public:
-
+public:
     negotiateOrder() {
-        name = "Negotiate Order";
+        *name = "Negotiate Order";
     }
 
     bool validate() const override {
@@ -165,21 +174,22 @@ class negotiateOrder : public Order {
 
     void execute() override {
         if (validate()) {
-            effect = "Negotiate troops";
-            executed = true;
+            *effect = "Negotiate troops";
+            *executed = true;
         }
-    }
-
-    std::string toString() const override {
-        return Order::toString(); // Use the base class implementation
     }
 };
 
 class orderList {
-    private:
-        std::vector<Order *> orders;
+private:
+    std::vector<Order*> orders;
 
-    public:
+public:
+    ~orderList() {
+        for (Order* order : orders) {
+            delete order;
+        }
+    }
 
     void addOrder(Order* order) {
         orders.push_back(order);
@@ -196,12 +206,12 @@ class orderList {
         if (oldIndex >= 0 && oldIndex < orders.size() &&
             newIndex >= 0 && newIndex < orders.size()) {
             std::swap(orders[oldIndex], orders[newIndex]);
-            }
+        }
     }
 
     void showAllOrders() const {
         for (const auto& order : orders) {
-            std::cout << order->toString(); // or you can just do std::cout << *order;
+            std::cout << order->toString();
         }
     }
 
