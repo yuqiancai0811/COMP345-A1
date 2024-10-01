@@ -5,6 +5,6 @@
 #include <iostream>
 
 // Function to test the Order and orderList functionality
-void test();
+void testOrdersLists();
 
 #endif // ORDERDRIVER_H
