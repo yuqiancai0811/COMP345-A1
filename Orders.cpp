@@ -1,224 +1,175 @@
-
-
-//
-// Created by Crimson on 2024-09-29.
-//
-
 #include "Orders.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
-class Order {
-protected:
-    std::string* effect;  // Changed to pointer
-    bool* executed;       // Changed to pointer
-public:
-    std::string* name;    // Changed to pointer
+// Order class methods
+Order::Order() : effect(new std::string), executed(new bool(false)), name(new std::string) {}
 
-    // Constructor
-    Order() : effect(new std::string), executed(new bool(false)), name(new std::string) {}
+Order::~Order() {
+    delete effect;
+    delete executed;
+    delete name;
+}
 
-    // Destructor
-    virtual ~Order() {
-        delete effect;
-        delete executed;
-        delete name;
+Order::Order(const Order& other) {
+    effect = new std::string(*other.effect);
+    executed = new bool(*other.executed);
+    name = new std::string(*other.name);
+}
+
+Order& Order::operator=(const Order& other) {
+    if (this == &other) return *this;
+
+    delete effect;
+    delete executed;
+    delete name;
+
+    effect = new std::string(*other.effect);
+    executed = new bool(*other.executed);
+    name = new std::string(*other.name);
+
+    return *this;
+}
+
+std::string Order::toString() const {
+    if (*executed && !name->empty()) {
+        return "Order: " + *name + " is executed\n";
+    } else if (!*executed && !name->empty()) {
+        return "Order: " + *name + " is not executed\n";
+    } else {
+        return "Order: Null\n";
     }
+}
 
-    // Copy constructor
-    Order(const Order& other) {
-        effect = new std::string(*other.effect);
-        executed = new bool(*other.executed);
-        name = new std::string(*other.name);
+std::ostream& operator<<(std::ostream& os, const Order& order) {
+    os << "Order: " << *order.name << (*order.executed ? " (Executed)" : " (Not executed)") << "\n";
+    os << "Effect: " << *order.effect << "\n";
+    return os;
+}
+
+// Subclass implementations
+deployOrder::deployOrder() {
+    *name = "deployOrder";
+}
+
+bool deployOrder::validate() const {
+    return true;
+}
+
+void deployOrder::execute() {
+    if (validate()) {
+        *effect = "Deploy troops";
+        *executed = true;
     }
+}
 
-    // Assignment operator
-    Order& operator=(const Order& other) {
-        if (this == &other) return *this;
+advanceOrder::advanceOrder() {
+    *name = "Advance Order";
+}
 
-        delete effect;
-        delete executed;
-        delete name;
+bool advanceOrder::validate() const {
+    return true;
+}
 
-        effect = new std::string(*other.effect);
-        executed = new bool(*other.executed);
-        name = new std::string(*other.name);
-
-        return *this;
+void advanceOrder::execute() {
+    if (validate()) {
+        *effect = "Advance troops";
+        *executed = true;
     }
+}
 
-    // Validate and execute methods are virtual and overridden by subclasses
-    virtual bool validate() const = 0;
-    virtual void execute() = 0;
+bombOrder::bombOrder() {
+    *name = "Bomb Order";
+}
 
-    virtual std::string toString() const {
-        if (*executed && !name->empty()) {
-            return "Order: " + *name + " is executed\n";
-        } else if (!*executed && !name->empty()) {
-            return "Order: " + *name + " is not executed\n";
-        } else {
-            return "Order: Null\n";
-        }
+bool bombOrder::validate() const {
+    return true;
+}
+
+void bombOrder::execute() {
+    if (validate()) {
+        *effect = "Bomb troops";
+        *executed = true;
     }
+}
 
-    // Stream insertion operator
-    friend std::ostream& operator<<(std::ostream& os, const Order& order) {
-        os << "Order: " << *order.name << (*order.executed ? " (Executed)" : " (Not executed)") << "\n";
-        os << "Effect: " << *order.effect << "\n";
-        return os;
+blockadeOrder::blockadeOrder() {
+    *name = "Blockade Order";
+}
+
+bool blockadeOrder::validate() const {
+    return true;
+}
+
+void blockadeOrder::execute() {
+    if (validate()) {
+        *effect = "Blockade troops";
+        *executed = true;
     }
-};
+}
 
-// Subclasses now inherit the changes made to the base class
+airliftOrder::airliftOrder() {
+    *name = "Airlift Order";
+}
 
-class deployOrder : public Order {
-public:
-    deployOrder() {
-        *name = "deployOrder";
+bool airliftOrder::validate() const {
+    return true;
+}
+
+void airliftOrder::execute() {
+    if (validate()) {
+        *effect = "Airlift troops";
+        *executed = true;
     }
+}
 
-    bool validate() const override {
-        return true;
+negotiateOrder::negotiateOrder() {
+    *name = "Negotiate Order";
+}
+
+bool negotiateOrder::validate() const {
+    return true;
+}
+
+void negotiateOrder::execute() {
+    if (validate()) {
+        *effect = "Negotiate troops";
+        *executed = true;
     }
+}
 
-    void execute() override {
-        if (validate()) {
-            *effect = "Deploy troops";
-            *executed = true;
-        }
+// orderList methods
+orderList::~orderList() {
+    for (Order* order : orders) {
+        delete order;
     }
-};
+}
 
-class advanceOrder : public Order {
-public:
-    advanceOrder() {
-        *name = "Advance Order";
+void orderList::addOrder(Order* order) {
+    orders.push_back(order);
+}
+
+void orderList::removeOrder(int index) {
+    if (index >= 0 && index < orders.size()) {
+        delete orders[index];
+        orders.erase(orders.begin() + index);
     }
+}
 
-    bool validate() const override {
-        return true;
+void orderList::moveOrder(int oldIndex, int newIndex) {
+    if (oldIndex >= 0 && oldIndex < orders.size() &&
+        newIndex >= 0 && newIndex < orders.size()) {
+        std::swap(orders[oldIndex], orders[newIndex]);
     }
+}
 
-    void execute() override {
-        if (validate()) {
-            *effect = "Advance troops";
-            *executed = true;
-        }
+void orderList::showAllOrders() const {
+    for (const auto& order : orders) {
+        std::cout << order->toString();
     }
-};
+}
 
-class bombOrder : public Order {
-public:
-    bombOrder() {
-        *name = "Bomb Order";
+std::ostream& operator<<(std::ostream& os, const orderList& ordersList) {
+    for (const auto& order : ordersList.orders) {
+        os << *order;
     }
-
-    bool validate() const override {
-        return true;
-    }
-
-    void execute() override {
-        if (validate()) {
-            *effect = "Bomb troops";
-            *executed = true;
-        }
-    }
-};
-
-class blockadeOrder : public Order {
-public:
-    blockadeOrder() {
-        *name = "Blockade Order";
-    }
-
-    bool validate() const override {
-        return true;
-    }
-
-    void execute() override {
-        if (validate()) {
-            *effect = "Blockade troops";
-            *executed = true;
-        }
-    }
-};
-
-class airliftOrder : public Order {
-public:
-    airliftOrder() {
-        *name = "Airlift Order";
-    }
-
-    bool validate() const override {
-        return true;
-    }
-
-    void execute() override {
-        if (validate()) {
-            *effect = "Airlift troops";
-            *executed = true;
-        }
-    }
-};
-
-class negotiateOrder : public Order {
-public:
-    negotiateOrder() {
-        *name = "Negotiate Order";
-    }
-
-    bool validate() const override {
-        return true;
-    }
-
-    void execute() override {
-        if (validate()) {
-            *effect = "Negotiate troops";
-            *executed = true;
-        }
-    }
-};
-
-class orderList {
-private:
-    std::vector<Order*> orders;
-
-public:
-    ~orderList() {
-        for (Order* order : orders) {
-            delete order;
-        }
-    }
-
-    void addOrder(Order* order) {
-        orders.push_back(order);
-    }
-
-    void removeOrder(int index) {
-        if (index >= 0 && index < orders.size()) {
-            delete orders[index];
-            orders.erase(orders.begin() + index);
-        }
-    }
-
-    void moveOrder(int oldIndex, int newIndex) {
-        if (oldIndex >= 0 && oldIndex < orders.size() &&
-            newIndex >= 0 && newIndex < orders.size()) {
-            std::swap(orders[oldIndex], orders[newIndex]);
-        }
-    }
-
-    void showAllOrders() const {
-        for (const auto& order : orders) {
-            std::cout << order->toString();
-        }
-    }
-
-    friend std::ostream& operator<<(std::ostream& os, const orderList& ordersList) {
-        for (const auto& order : ordersList.orders) {
-            os << *order;
-        }
-        return os;
-    }
-};
+    return os;
+}
