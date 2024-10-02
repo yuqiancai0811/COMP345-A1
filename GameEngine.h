@@ -3,7 +3,13 @@
 
 #include <string>
 #include <iostream>
-
+#include <string>
+#include <iostream>
+#include "Map.h"
+#include "Cards.h"
+#include "Orders.h"
+#include "Player.h"
+#include <vector>
 // Enum class to represent different game states
 enum class GameState {
     Start,
