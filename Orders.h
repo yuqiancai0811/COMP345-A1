@@ -1,14 +1,12 @@
-//
-// Created by Crimson on 2024-09-29.
-//
-
 #ifndef ORDERS_H
 #define ORDERS_H
+
 #include <iostream>
 #include <string>
 #include <vector>
 
-class Orders {
+// Base class for all orders
+class Order {
 protected:
     std::string* effect;
     bool* executed;
@@ -17,16 +15,16 @@ public:
     std::string* name;
 
     // Constructor
-    Orders();
+    Order();
 
     // Destructor
-    virtual ~Orders();
+    virtual ~Order();
 
     // Copy constructor
-    Orders(const Orders& other);
+    Order(const Order& other);
 
     // Assignment operator
-    Orders& operator=(const Orders& other);
+    Order& operator=(const Order& other);
 
     // Virtual methods for validation and execution
     virtual bool validate() const = 0;
@@ -36,9 +34,69 @@ public:
     virtual std::string toString() const;
 
     // Stream insertion operator
-    friend std::ostream& operator<<(std::ostream& os, const Orders& order);
+    friend std::ostream& operator<<(std::ostream& os, const Order& order);
 };
 
+// Derived classes for specific order types
+class deployOrder : public Order {
+public:
+    deployOrder();
+    bool validate() const override;
+    void execute() override;
+};
 
+class advanceOrder : public Order {
+public:
+    advanceOrder();
+    bool validate() const override;
+    void execute() override;
+};
 
-#endif //ORDERS_H
+class bombOrder : public Order {
+public:
+    bombOrder();
+    bool validate() const override;
+    void execute() override;
+};
+
+class blockadeOrder : public Order {
+public:
+    blockadeOrder();
+    bool validate() const override;
+    void execute() override;
+};
+
+class airliftOrder : public Order {
+public:
+    airliftOrder();
+    bool validate() const override;
+    void execute() override;
+};
+
+class negotiateOrder : public Order {
+public:
+    negotiateOrder();
+    bool validate() const override;
+    void execute() override;
+};
+
+// Class to manage a list of orders
+class orderList {
+private:
+    std::vector<Order*> orders;
+
+public:
+    // Destructor
+    ~orderList();
+
+    // Methods to add, remove, move, and display orders
+    void addOrder(Order* order);
+    void removeOrder(int index);
+    void moveOrder(int oldIndex, int newIndex);
+    void showAllOrders() const;
+
+    // Stream insertion operator
+    friend std::ostream& operator<<(std::ostream& os, const orderList& ordersList);
+};
+
+#endif // ORDERS_H
