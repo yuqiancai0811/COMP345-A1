@@ -20,18 +20,19 @@ class Territory {
     Territory(std::string name, int x, int y, std::string continent, const std::vector<std::string>& adjNames); //Constructor(Name + X + Y + Continent + vertor (adjacentTerritoryNames) );
     ~Territory();
 
+    //Set functions;
     void setOwner(const std::string& owner);
     void setArmies(int numArmies);
     void addAdjacentTerritory(Territory* territory);
-    //Set functions;
-
+    
+    //Get functions;
     int getArmies() const;
     std::string getName() const;
     std::string getOwner() const;
     std::string getContinent() const;
     std::vector<std::string> getAdjacentTerritoryNames() const;
     std::vector<Territory*> getAdjacentTerritories() const;
-    //Get functions;
+    
 
     void printTerritoryInfo() const;  // print function
 
@@ -111,4 +112,4 @@ public:
     bool validate() const;
 };
 
-#endif // MAP_H
+#endif 

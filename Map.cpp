@@ -72,7 +72,15 @@ void Continent::printContinentInfo() const {
 // Map class methods
 Map::Map() : author("Nan"), warn("Nan"), image("Nan"), wrap("Nan"), horizontal("Nan") {}
 
-Map::~Map() {}
+Map::~Map() {
+    // deletes all territory objects stored on heap.
+    for (Territory *territory: territories) {
+        delete territory;
+    }
+    for (Continent *continent: continents) {
+        delete continent;
+    }
+}
 
 void Map::setAuthor(const std::string& newAuthor) { author = newAuthor; }
 void Map::setWarn(const std::string& newWarn) { warn = newWarn; }
