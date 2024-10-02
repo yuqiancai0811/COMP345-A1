@@ -13,13 +13,28 @@
 bool testLoadMaps(){
     std::vector<std::string> filename;
     filename.push_back("USA.map");
-    bool result = true;
+    filename.push_back("Europe.map");
+    
+    bool result;
     
 
 
     for(const std::string& filename : filename){
-        Map* loadmap= loadmap ->loadMapFromFile(filename);
-        bool result = result && loadmap ->validate();
+        Map* selectedMap = selectedMap -> loadMapFromFile(filename);
+        bool readResult =  (selectedMap == nullptr);
+        if (!readResult) {
+            std::cout << "Map " << filename << " loaded successfully!\n";
+        } else {
+            std::cout << "Failed to load the map"<< filename <<". Please try again.\n";
+        }
+
+        bool validateResult = selectedMap->validate();
+
+        if (validateResult) {
+            std::cout << "Map " << filename << "validated successfully!\n";
+        } else {
+            std::cout << "Map " << filename << "Map validation failed. \n";
+        }
     }
 
     return result;
