@@ -105,8 +105,9 @@ public:
     
 
     bool territoryBelongsToOneContinentsConnected() const;// each country belongs to one and only one continent
-    
 
+    Map* loadMapFromFile(const std::string& filename);
+    
     bool validate() const;
 };
 
