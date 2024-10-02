@@ -176,8 +176,11 @@ Hand &Hand::operator=(const Hand &other)
 }
 
 // Destructor
-Hand::~Hand()
-{}
+Hand::~Hand() {
+    for (Card* card : handCards) {
+        delete card;
+    }
+}
 
 // Add a card to the hand
 void Hand::addCard(Card *card)
