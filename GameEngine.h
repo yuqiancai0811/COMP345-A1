@@ -3,70 +3,45 @@
 
 #include <string>
 #include <iostream>
-#include <string>
-#include <iostream>
-#include "Map.h"
-#include "Cards.h"
-#include "Orders.h"
-#include "Player.h"
 #include <vector>
-// Enum class to represent different game states
-enum class GameState {
-    Start,
-    MapLoaded,
-    MapValidated,
-    PlayersAdded,
-    AssignReinforcement,
-    IssueOrders,
-    ExecuteOrders,
-    Win,
-    End
-};
+#include "Map.h"
+#include "Player.h"
+#include "Orders.h"
+#include "Cards.h"
 
 class GameEngine {
-public:
-    // Constructor initializes the game engine with the initial state
-    GameEngine();
-    // Destructor (using default as there is no dynamic memory to clean up)
-    ~GameEngine() = default;
-    // Processes the command input by the user and transitions between states
-    void handleCommand(const std::string& command);// Handles user commands
-    // Returns the current game state as an enum
-
-    GameState getCurrentState() const; //getter function for the current state.
-    // Converts the enum state to a string.
-    std::string getCurrentStateAsString() const;
-
-
 private:
-    GameState currentState;  // Stores the current state of the game
-    // Helper methods for state transitions  ---8
-    void transitionToMapLoaded();
-    void transitionToMapValidated();
-    void transitionToPlayersAdded();
-    void transitionToAssignReinforcement();
-    void transitionToIssueOrders();
-    void transitionToExecuteOrders();
-    void transitionToWin();
-    void transitionToEnd();
-    
+    std::string currentState;        // The current game state (managed as a string)
+    Map* selectedMap;                // The game map
+    std::vector<Player*> playerList; // List of players
+    Deck deck;                       // The deck of cards for the game
 
-    // Helper methods for handling different game states
-    void handleStartState(const std::string& command);
-    void handleMapLoadedState(const std::string& command);
-    void handleMapValidatedState(const std::string& command);
-    void handlePlayersAddedState(const std::string& command);
-    
-    void handleAssignReinforcementState(const std::string& command);
-    void handleIssueOrdersState(const std::string& command);
-    void handleExecuteOrdersState(const std::string& command);
+public:
+    GameEngine();  // Constructor to initialize the game
+    ~GameEngine(); // Destructor to clean up resources
 
-    void handleWinState(const std::string& command);
-    void handleEndState(const std::string& command);
+    // Handles the startup phase of the game
+    void handleStartup(); 
 
+    // Processes user commands for starting the game
+    void handleUserCommand(const std::string& command); 
 
-    // Centralized function to print an error message for invalid commands
-    void printInvalidCommand(const std::string& expectedCommand) const;
+    // Handles the gameplay phase (assigning reinforcement, issuing orders, executing orders)
+    void playGame();
+
+    // Function to draw and play cards
+    void playCards(Player* player);
+
+    // Helper function to transition between states
+    void transitionTo(const std::string& newState);
+
+    // Prints the initial welcome message
+    void printWelcomeMessage() const;
+
+    // Prompts the user for the next action after startup
+    void promptNextAction() const;
+
+    // Get the current game state as a string
+    std::string getCurrentState() const;
 };
-
 #endif // GAMEENGINE_H
